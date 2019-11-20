@@ -7,9 +7,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val API_KEY = "a8qnicp2ny9edeptyjcfxr1uxekfqa"
-private const val USER_KEY = "ufatpynukrwdd3ved6ffv5f54p114g"
-private const val DEVICE_NAME = "device_real"
+
 
 class RestProvider {
 
@@ -22,11 +20,6 @@ class RestProvider {
             .build()
     }
 
-    private var messageBody = MessageBody(
-        token = API_KEY,
-        user = USER_KEY,
-        device = DEVICE_NAME
-    )
 
     private val service = getRetrofit().create(PushoverApi::class.java)
 
