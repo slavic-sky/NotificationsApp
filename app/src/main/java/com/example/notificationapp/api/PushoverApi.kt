@@ -13,6 +13,5 @@ import retrofit2.http.POST
 
 interface PushoverApi {
     @POST("/1/messages.json")
-    @FormUrlEncoded
     fun sendMessage(@Body messageBody : MessageBody) : Call<MessageBody>
 }

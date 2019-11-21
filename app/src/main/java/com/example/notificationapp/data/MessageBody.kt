@@ -8,9 +8,9 @@ data class MessageBody(
     @field:Json(name = "user")
     val user: String? = null,
     @field:Json(name = "message")
-    val message: String? = null,
+    var message: String? = null,
     @field:Json(name = "device")
     val device: String? = null,
     @field:Json(name = "title")
-    val title: String? = null
+    var title: String? = null
 )

@@ -1,13 +1,14 @@
 package com.example.notificationapp.api
 
+import android.widget.Toast
+import android.widget.Toast.makeText
+import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.data.MessageBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-
-
 
 class RestProvider {
 
@@ -20,7 +21,6 @@ class RestProvider {
             .build()
     }
 
-
     private val service = getRetrofit().create(PushoverApi::class.java)
 
     fun sendMessage(messageBody: MessageBody) {
@@ -31,7 +31,7 @@ class RestProvider {
 
             override fun onResponse(call: Call<MessageBody>, response: Response<MessageBody>) {
                 if (response.isSuccessful && response.body() != null) {
-
+                    makeText(NotificationApp.context, "response is $response", Toast.LENGTH_SHORT).show()
                 }
             }
         })

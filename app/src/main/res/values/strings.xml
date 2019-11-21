@@ -4,6 +4,6 @@
     <string name="send_to_the_time">SEND</string>
     <string name="message_hint">type text of the meassage here</string>
     <string name="specify_time">specify notification time if necessary</string>
-    <string name="greetings_text">This app send notifications to smartphones</string>
+    <string name="greetings_text">This app sends notifications to smartphones</string>
     <string name="title">specify title if necessary</string>
 </resources>
