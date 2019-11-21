@@ -2,13 +2,17 @@ package com.example.notificationapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import com.example.notificationapp.api.RepositoryProvider
 import com.example.notificationapp.data.MessageBody
+import com.example.notificationapp.utils.extensions.isValidDateTime
+import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.StringBuilder
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val API_KEY = "a8qnicp2ny9edeptyjcfxr1uxekfqa"
     private val USER_KEY = "uzhy6h56hb3ok79jpdkexbc8d83ggi"
     private val DEVICE_NAME = "device_real"
+    private val INPUT_MASK = "__/__/__, __:__"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         val editTextTitle = et_title as EditText
         val buttonSend = btn_send as Button
         val textView = tv_greeting as TextView
+
+        editTextTimeDate.run {
+            hangAFormatWatcher(INPUT_MASK)
+            addTextChangedListener { charSequence -> charSequence!!.isValidDateTime()
+            }
+        }
 
         val messageBody = MessageBody(
             message = editTextMessage.text.toString(),
