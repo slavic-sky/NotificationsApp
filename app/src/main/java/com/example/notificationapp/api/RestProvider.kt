@@ -14,7 +14,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RestProvider {
 
-    private val BASE_URL: String = "https://pushover.net"
+    private val BASE_URL: String = "https://api.pushover.net"
 
     private fun getRetrofit(): Retrofit {
         val interceptor = HttpLoggingInterceptor()
