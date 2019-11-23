@@ -20,6 +20,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        buildTypes.each {
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+            def apiKey = properties.getProperty("api_key", "")
+            def userKey = properties.getProperty("user_key", "")
+            def deviceName = properties.getProperty("device_name", "")
+
+            it.buildConfigField 'String', "API_KEY", apiKey
+            it.buildConfigField 'String', "USER_KEY", userKey
+            it.buildConfigField 'String', "DEVICE_NAME", deviceName
+
+            it.resValue 'string', "api_key", apiKey
+            it.resValue 'string', "user_key", userKey
+            it.resValue 'string', "device_name", deviceName
+        }
     }
 
     packagingOptions {

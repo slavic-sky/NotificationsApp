@@ -3,7 +3,9 @@ package com.example.notificationapp.api
 import android.widget.Toast
 import android.widget.Toast.makeText
 import com.example.notificationapp.NotificationApp
+import com.example.notificationapp.NotificationApp.Companion.context
 import com.example.notificationapp.data.MessageBody
+import com.example.notificationapp.utils.extensions.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,14 +26,22 @@ class RestProvider {
     private val service = getRetrofit().create(PushoverApi::class.java)
 
     fun sendMessage(messageBody: MessageBody) {
-        service.sendMessage(messageBody).enqueue(object : Callback<MessageBody> {
+        println("=============================="+messageBody)
+        service.sendMessage(
+            messageBody.token,
+            messageBody.user,
+            messageBody.message,
+            messageBody.title,
+            messageBody.device
+        ).enqueue(object : Callback<MessageBody> {
             override fun onFailure(call: Call<MessageBody>, t: Throwable) {
                 t.printStackTrace()
+                context.toast("ERROR")
             }
 
             override fun onResponse(call: Call<MessageBody>, response: Response<MessageBody>) {
                 if (response.isSuccessful && response.body() != null) {
-                    makeText(NotificationApp.context, "response is $response", Toast.LENGTH_SHORT).show()
+                    context.toast("RESPONSE")
                 }
             }
         })
