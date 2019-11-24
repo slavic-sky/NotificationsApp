@@ -27,15 +27,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-
         val adapter = CustomFragmentPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
         val inputFragment = InputFragment.newInstance(0, "Input post")
         val listPostsFragment = ListPostsFragment.newInstance(1, "List of messages")
-
-        adapter.addFragment(inputFragment, "ONE")
-        adapter.addFragment(listPostsFragment, "TWO")
-
+        adapter.addFragment(inputFragment, "Input post")
+        adapter.addFragment(listPostsFragment, "List of messages")
 
         tabs.setupWithViewPager(viewPager)
     }
