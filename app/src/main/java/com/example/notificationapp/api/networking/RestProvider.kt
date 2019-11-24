@@ -1,7 +1,8 @@
-package com.example.notificationapp.api
+package com.example.notificationapp.api.networking
 
 import com.example.notificationapp.NotificationApp.Companion.context
-import com.example.notificationapp.data.MessageBody
+import com.example.notificationapp.api.services.PushoverApi
+import com.example.notificationapp.model.MessageBody
 import com.example.notificationapp.utils.extensions.toast
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,7 +34,6 @@ class RestProvider {
     private val service = getRetrofit().create(PushoverApi::class.java)
 
     fun sendMessage(messageBody: MessageBody) {
-        println("==============================" + messageBody)
         service.sendMessage(
             messageBody.token,
             messageBody.user,
@@ -48,7 +48,7 @@ class RestProvider {
 
             override fun onResponse(call: Call<MessageBody>, response: Response<MessageBody>) {
                 if (response.isSuccessful && response.body() != null) {
-                    context.toast("RESPONSE")
+                    context.toast("notification will come now")
                 }
             }
         })

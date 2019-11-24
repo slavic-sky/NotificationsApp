@@ -1,7 +1,6 @@
-package com.example.notificationapp.data
+package com.example.notificationapp.model
 
 import com.example.notificationapp.BuildConfig
-import com.squareup.moshi.Json
 
 data class MessageBody(
     val token: String = BuildConfig.API_KEY,
