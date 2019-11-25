@@ -24,7 +24,6 @@ import com.example.notificationapp.utils.extensions.toast
 import kotlinx.android.synthetic.main.fragment_input.*
 import java.util.*
 
-
 class InputFragment : Fragment() {
 
     private var dateIsValid: Boolean = false

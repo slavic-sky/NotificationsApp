@@ -2,12 +2,16 @@ package com.example.notificationapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
 import com.example.notificationapp.view.fragments.InputFragment
 import com.example.notificationapp.view.fragments.ListPostsFragment
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +23,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initViews()
         setupViewPager()
-        actionBar?.setDisplayShowHomeEnabled(false)  // hides action bar icon
-        actionBar?.setDisplayShowTitleEnabled(false)
+
+        val navController =
+            Navigation.findNavController(this, R.id.nav_host_fragment)
+
+        val navOptions = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setPopUpTo(navController.graph.startDestination, false)
+            .build()
+        val tabLayout = tabs
+
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                when (tab.position) {
+                    0 -> navController.navigate(R.id.navigation_input, null, navOptions)
+                    1 -> navController.navigate(R.id.navigation_list, null, navOptions)
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
     }
 
     private fun initViews() {

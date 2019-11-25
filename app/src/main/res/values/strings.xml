@@ -7,10 +7,8 @@
     <string name="greetings_text">This app sends notifications to smartphones</string>
     <string name="title">specify title if necessary</string>
 
-    <string name="one">one</string>
-    <string name="two">two</string>
-    <string name="three">three</string>
-
     <string name="dummy_text_small">Suppose that you were sitting down at this table</string>
+    <string name="title_input">Input message</string>
+    <string name="title_list">Sent messages list</string>
 
 </resources>
