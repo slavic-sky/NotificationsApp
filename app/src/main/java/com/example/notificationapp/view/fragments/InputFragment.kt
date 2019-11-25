@@ -37,8 +37,6 @@ class InputFragment : Fragment() {
     ): View? {
         Log.d(TAG, "onCreateView")
         val contextThemeWrapper: Context = ContextThemeWrapper(activity, R.style.AppTheme)
-        // clone the inflater using the ContextThemeWrapper
-        // clone the inflater using the ContextThemeWrapper
         val localInflater = inflater.cloneInContext(contextThemeWrapper)
         return localInflater.inflate(R.layout.fragment_input, container, false)
     }

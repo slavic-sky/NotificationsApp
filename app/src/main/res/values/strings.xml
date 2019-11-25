@@ -11,4 +11,16 @@
     <string name="title_input">Input message</string>
     <string name="title_list">Sent messages list</string>
 
+    <string name="sample_date">23/08/2008 90:09:13</string>
+
+    <string name="dummy_text_medium">Suppose that you were sitting down at this table. The napkins
+        are in front of you, which napkin would you take? The one on your ‘left’? Or the one on your
+        ‘right’? The one on your left side? Or the one on your right side?</string>
+
+    <string name="dummy_text_long">Suppose that you were sitting down at this table. The napkins
+    are in front of you, which napkin would you take? The one on your ‘left’? Or the one on your
+    ‘right’? The one on your left side? Or the one on your right side? Usually you would take
+    the one on your left side. That is ‘correct’ too. But in a larger sense on society, that is
+    wrong. Perhaps I could even substitute ‘society’ with the ‘Universe’. The correct answer is
+    that ‘It is determined by the one who takes his or her own napkin first‘.</string>
 </resources>
