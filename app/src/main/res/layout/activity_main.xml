@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00ffffff"
+    android:background="@drawable/flowers_field_cut"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -14,7 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@color/color_underline"
+        />
 
     <View
         android:layout_width="match_parent"
@@ -25,7 +28,8 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#00ffffff" />
+        android:background="#00ffffff"
+        />
 
     <FrameLayout
         android:id="@+id/fragment_container"

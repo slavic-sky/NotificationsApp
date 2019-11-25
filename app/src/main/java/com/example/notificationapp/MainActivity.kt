@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initViews()
         setupViewPager()
+        actionBar?.setDisplayShowHomeEnabled(false)  // hides action bar icon
+        actionBar?.setDisplayShowTitleEnabled(false)
     }
 
     private fun initViews() {
