@@ -1,5 +1,6 @@
 package com.example.notificationapp.view.fragments
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
@@ -11,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.notificationapp.NotificationApp
@@ -23,6 +23,7 @@ import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
 import kotlinx.android.synthetic.main.fragment_input.*
 import java.util.*
+
 
 class InputFragment : Fragment() {
 
@@ -93,5 +94,57 @@ class InputFragment : Fragment() {
 
     }
 
+    val LOG_TAG = "myLogs"
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d(LOG_TAG, "Fragment1 onAttach")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d(LOG_TAG, "Fragment1 onCreate")
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        Log.d(LOG_TAG, "Fragment1 onActivityCreated")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(LOG_TAG, "Fragment1 onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(LOG_TAG, "Fragment1 onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(LOG_TAG, "Fragment1 onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(LOG_TAG, "Fragment1 onStop")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(LOG_TAG, "Fragment1 onDestroyView")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(LOG_TAG, "Fragment1 onDestroy")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d(LOG_TAG, "Fragment1 onDetach")
+    }
 
 }
