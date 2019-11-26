@@ -1,21 +1,19 @@
 package com.example.notificationapp.api.networking
 
-import com.example.notificationapp.model.MessageBody
-import java.util.*
+import com.example.notificationapp.model.Notification
 
 object RepositoryProvider {
 
     private val retrofitClient =
         RestProvider()
 
-    fun sendMessage(messageBody: MessageBody) = retrofitClient.sendMessage(messageBody)
-
-    fun sendMessageToDate(messageBody: MessageBody, date: Date) {
-        val currentDate = Date()
-        if (currentDate == date){
-            sendMessage(
-                messageBody
-            )
-        }
+    fun sendMessage(notification: Notification, onResult: (Notification) -> Unit) {
+        retrofitClient.sendMessage(notification, onResult)
     }
+
+/*    fun sendMessageToDate(notificationBody: NotificationBody, date: Date) {
+        val currentDate = Date()
+        if (currentDate == date) {
+            sendMessage(notificationBody, (NotificationBody)-> Unit)
+        }*/
 }

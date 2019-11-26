@@ -3,10 +3,18 @@ package com.example.notificationapp.view.fragments
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.core.os.bundleOf
+import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.notificationapp.view.adapters.ListPostsAdapter
+import com.example.notificationapp.viewmodel.PostsViewModel
+import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListPostsFragment : Fragment() {
+
+    private lateinit var postsViewModel: PostsViewModel
+
     companion object {
         private val ARG_PARAM1 = "page number"
         private val ARG_PARAM2 = "title"
@@ -33,6 +41,22 @@ class ListPostsFragment : Fragment() {
         Log.d(LOG_TAG, "Fragment2 onCreate")
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initRecycler()
+
+    }
+
+    private fun initRecycler() {
+        val adapter = ListPostsAdapter()
+        list_notifications.layoutManager = LinearLayoutManager(activity)
+        list_notifications.adapter = adapter
+
+        postsViewModel.getPostsLiveData().observe(this, Observer {
+            adapter.loadNotification(it)
+        })
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

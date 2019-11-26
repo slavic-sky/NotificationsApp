@@ -2,7 +2,7 @@ package com.example.notificationapp.api.networking
 
 import com.example.notificationapp.NotificationApp.Companion.context
 import com.example.notificationapp.api.services.PushoverApi
-import com.example.notificationapp.model.MessageBody
+import com.example.notificationapp.model.Notification
 import com.example.notificationapp.utils.extensions.toast
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,25 +33,33 @@ class RestProvider {
 
     private val service = getRetrofit().create(PushoverApi::class.java)
 
-    fun sendMessage(messageBody: MessageBody) {
+    fun sendMessage(notification: Notification, onResult: (Notification) -> Unit) {
         service.sendMessage(
-            messageBody.token,
-            messageBody.user,
-            messageBody.message,
-            messageBody.title,
-            messageBody.device
-        ).enqueue(object : Callback<MessageBody> {
-            override fun onFailure(call: Call<MessageBody>, t: Throwable) {
+            notification.token,
+            notification.user,
+            notification.message,
+            notification.title,
+            notification.device
+        ).enqueue(object : Callback<Notification> {
+            override fun onFailure(call: Call<Notification>, t: Throwable) {
                 t.printStackTrace()
                 context.toast("ERROR")
             }
 
-            override fun onResponse(call: Call<MessageBody>, response: Response<MessageBody>) {
+            override fun onResponse(
+                call: Call<Notification>,
+                response: Response<Notification>
+            ) {
                 if (response.isSuccessful && response.body() != null) {
                     context.toast("notification will come now")
+                    onResult(notification)
                 }
+            }
+            private fun responseSuccess(){
+
             }
         })
     }
+
 }
 
