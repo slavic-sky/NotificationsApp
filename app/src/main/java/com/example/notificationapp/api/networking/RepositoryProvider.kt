@@ -1,6 +1,6 @@
 package com.example.notificationapp.api.networking
 
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 
 object RepositoryProvider {
 

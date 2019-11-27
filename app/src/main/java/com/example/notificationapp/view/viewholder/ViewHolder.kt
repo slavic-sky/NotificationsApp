@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notificationapp.R
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

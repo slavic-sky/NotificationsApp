@@ -1,6 +1,6 @@
 package com.example.notificationapp.api.services
 
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

@@ -2,7 +2,7 @@ package com.example.notificationapp.api.networking
 
 import com.example.notificationapp.NotificationApp.Companion.context
 import com.example.notificationapp.api.services.PushoverApi
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 import com.example.notificationapp.utils.extensions.toast
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

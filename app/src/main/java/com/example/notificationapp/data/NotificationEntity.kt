@@ -5,14 +5,14 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 import java.util.Calendar
 
 @Entity(
     tableName = "notifications",
     foreignKeys = [
         ForeignKey(
-            entity = Notification::class,
+            entity = NotificationEntity::class,
             parentColumns = ["id"],
             childColumns = ["post_id"]
         )
@@ -20,8 +20,6 @@ import java.util.Calendar
     indices = [Index("post_id")]
 )
 data class NotificationEntity(
-    @ColumnInfo(name = "post_id") val postId: String,
-
     @ColumnInfo(name = "date_to_send") val postDate: Calendar = Calendar.getInstance(),
 
     @ColumnInfo(name = "message") val postMessage: String,

@@ -1,4 +1,4 @@
-package com.example.notificationapp.model
+package com.example.notificationapp.data.model
 
 import com.example.notificationapp.BuildConfig
 

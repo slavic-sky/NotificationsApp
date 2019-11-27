@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.R
-import com.example.notificationapp.model.Notification
+import com.example.notificationapp.data.model.Notification
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast

@@ -31,20 +31,9 @@ interface NotificationDao {
     @Query("SELECT * FROM notifications")
     fun getNotifications(): LiveData<List<NotificationEntity>>
 
-    @Query("SELECT EXISTS(SELECT 1 FROM garden_plantings WHERE plant_id = :plantId LIMIT 1)")
-    fun isPlanted(plantId: String): LiveData<Boolean>
-
-    /**
-     * This query will tell Room to query both the [Plant] and [NotificationEntity] tables and handle
-     * the object mapping.
-     */
-    @Transaction
-    @Query("SELECT * FROM plants WHERE id IN (SELECT DISTINCT(plant_id) FROM garden_plantings)")
-    fun getPlantedGardens(): LiveData<List<PlantAndGardenPlantings>>
+    @Query("SELECT * FROM notifications WHERE id = :postId")
+    fun getNotificationById(postId: String): LiveData<NotificationEntity>
 
     @Insert
-    suspend fun insertGardenPlanting(gardenPlanting: NotificationEntity): Long
-
-    @Delete
-    suspend fun deleteGardenPlanting(gardenPlanting: NotificationEntity)
+    suspend fun insertNotification(notificationEntity: NotificationEntity): Long
 }
