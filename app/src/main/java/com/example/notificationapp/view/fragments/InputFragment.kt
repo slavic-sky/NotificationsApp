@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -21,6 +22,7 @@ import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
 import com.example.notificationapp.viewmodel.PostsViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_input.*
 
 
@@ -72,7 +74,7 @@ class InputFragment : Fragment() {
                 charSequence!!.isValidDateTime()
             }
         }
-
+        
         val messageBody = Notification()
 
         buttonSend.setOnClickListener {
