@@ -45,7 +45,6 @@ class ListPostsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecycler()
-
     }
 
     private fun initRecycler() {

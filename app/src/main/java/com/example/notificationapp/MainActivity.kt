@@ -2,16 +2,17 @@ package com.example.notificationapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.viewpager.widget.ViewPager import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
+import androidx.navigation.*
+import androidx.navigation.fragment.NavHostFragment
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
 import com.example.notificationapp.view.fragments.InputFragment
 import com.example.notificationapp.view.fragments.ListPostsFragment
+import com.example.notificationapp.view.navigation.KeepStateNavigator
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,10 +25,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViews()
-/*        setupViewPager()*/
+        setupViewPager()
 
-        val navController =
-            Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
+        val navigator = KeepStateNavigator(this, navHostFragment.childFragmentManager, R.id.nav_host_fragment)
+        navController.navigatorProvider += navigator
 
         val navOptions = NavOptions.Builder()
             .setLaunchSingleTop(true)
@@ -36,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val tabLayout = tabs
 
-        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
                     0 -> {
@@ -57,16 +60,16 @@ class MainActivity : AppCompatActivity() {
         viewPager = pager as ViewPager
     }
 
-/*    private fun setupViewPager() {
+    private fun setupViewPager() {
         val adapter = CustomFragmentPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
         inputFragment = InputFragment.newInstance(0, "Input post") as InputFragment
         listPostsFragment = ListPostsFragment.newInstance(1, "List of messages") as ListPostsFragment
         adapter.addFragment(inputFragment, "Input post")
         adapter.addFragment(listPostsFragment, "List of messages")
-
         tabs.setupWithViewPager(viewPager)
-    }*/
+    }
+
 }
 
 
