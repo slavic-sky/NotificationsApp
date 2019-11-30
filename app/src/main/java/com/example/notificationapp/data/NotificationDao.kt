@@ -18,10 +18,8 @@ package com.example.notificationapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Transaction
 
 /**
  * The Data Access Object for the [NotificationEntity] class.

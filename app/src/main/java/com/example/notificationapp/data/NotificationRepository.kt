@@ -30,7 +30,6 @@ class NotificationRepository private constructor(private val postDao: Notificati
             message = notification.message,
             title = notification.title
         )
-
         postDao.insertNotification(notificationEntity)
     }
 

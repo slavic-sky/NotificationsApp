@@ -11,18 +11,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.R
+import com.example.notificationapp.data.api.networking.RepositoryProvider
 import com.example.notificationapp.data.model.Notification
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
-import com.example.notificationapp.viewmodel.PostsViewModel
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_input.*
 
 
@@ -30,7 +27,6 @@ class InputFragment : Fragment() {
 
     private var dateIsValid: Boolean = false
     private val INPUT_MASK = "__/__/__, __:__"
-    private lateinit var postsViewModel: PostsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,34 +62,33 @@ class InputFragment : Fragment() {
         val buttonSend = btn_send as Button
         val textView = tv_greeting as TextView
 
-        postsViewModel = ViewModelProviders.of(this).get(PostsViewModel::class.java)
-
         editTextTimeDate.run {
             hangAFormatWatcher(INPUT_MASK)
             addTextChangedListener { charSequence ->
                 charSequence!!.isValidDateTime()
             }
         }
-        
+
         val messageBody = Notification()
 
         buttonSend.setOnClickListener {
             messageBody.message = editTextMessage.text.toString()
             messageBody.title = editTextTitle.text.toString()
 
-            if (messageBody.message.isEmpty()) {
+            if (messageBody.message.isNotEmpty()) {
+                RepositoryProvider.sendMessage(messageBody)
+            } else {
                 NotificationApp.context.toast("type something!")
             }
+
 /*            if (dateIsValid) {
                 RepositoryProvider.sendMessageToDate(
                     messageBody,
                     editTextTimeDate.text as Date
                 )
             } else {*/
-                postsViewModel.sendMessage(messageBody)
             //}
         }
-
     }
 
     val LOG_TAG = "myLogs"

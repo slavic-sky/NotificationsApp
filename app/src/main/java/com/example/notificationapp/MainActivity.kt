@@ -2,16 +2,17 @@ package com.example.notificationapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.NavOptions
+import androidx.databinding.DataBindingUtil.setContentView
+import androidx.navigation.findNavController
+import androidx.navigation.plusAssign
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
+import com.example.notificationapp.databinding.ActivityMainBinding
 import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
 import com.example.notificationapp.view.fragments.InputFragment
 import com.example.notificationapp.view.fragments.ListPostsFragment
 import com.example.notificationapp.view.navigation.KeepStateNavigator
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         initViews()
         setupViewPager()
 

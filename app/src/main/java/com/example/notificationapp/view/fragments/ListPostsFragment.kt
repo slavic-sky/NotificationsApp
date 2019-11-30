@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.notificationapp.databinding.FragmentListBinding
-import com.example.notificationapp.databinding.FragmentViewPagerBinding
 import com.example.notificationapp.utils.InjectorUtils
 import com.example.notificationapp.view.adapters.ListPostsAdapter
 import com.example.notificationapp.viewmodel.PostsViewModel
@@ -24,8 +24,8 @@ class ListPostsFragment : Fragment() {
     }
 
     companion object {
-        private val ARG_PARAM1 = "page number"
-        private val ARG_PARAM2 = "title"
+        private const val ARG_PARAM1 = "page number"
+        private const val ARG_PARAM2 = "title"
 
         fun newInstance(page: Int, title: String): Fragment {
             val fragment = ListPostsFragment()
@@ -46,6 +46,7 @@ class ListPostsFragment : Fragment() {
         context ?: binding.root
 
         val adapter = ListPostsAdapter()
+        binding.listNotifications.layoutManager = LinearLayoutManager(activity)
         binding.listNotifications.adapter = adapter
         postsViewModel.getPostsLiveData().observe(this, Observer(adapter::loadNotification))
         return binding.root
@@ -63,18 +64,14 @@ class ListPostsFragment : Fragment() {
         Log.d(LOG_TAG, "Fragment2 onCreate")
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private fun initRecycler() {
-/*        val adapter = ListPostsAdapter()
+       val adapter = ListPostsAdapter()
         list_notifications.layoutManager = LinearLayoutManager(activity)
-        list_notifications.adapter = adapter*/
+        list_notifications.adapter = adapter
 
-/*        postsViewModel.getPostsLiveData().observe(this, Observer {
+        postsViewModel.getPostsLiveData().observe(this, Observer {
             adapter.loadNotification(it)
-        })*/
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

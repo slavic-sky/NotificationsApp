@@ -27,7 +27,6 @@ class ListPostsAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     fun loadNotification(notification: Notification) {
-        postsList.clear()
         postsList.add(notification)
         notifyDataSetChanged()
     }

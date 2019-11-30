@@ -1,7 +1,9 @@
-package com.example.notificationapp.api.services
+package com.example.notificationapp.data.api.services
 
+import com.example.notificationapp.data.ResponseWrapper
 import com.example.notificationapp.data.model.Notification
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

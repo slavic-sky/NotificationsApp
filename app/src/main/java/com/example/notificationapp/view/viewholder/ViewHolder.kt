@@ -8,9 +8,9 @@ import com.example.notificationapp.data.model.Notification
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    val titleView: TextView = itemView.findViewById(R.id.tv_notif_title)
-    val messageView: TextView = itemView.findViewById(R.id.tv_notif_message)
-    val dateView: TextView = itemView.findViewById(R.id.tv_notif_date_time)
+    private val titleView: TextView = itemView.findViewById(R.id.tv_notif_title)
+    private val messageView: TextView = itemView.findViewById(R.id.tv_notif_message)
+    private val dateView: TextView = itemView.findViewById(R.id.tv_notif_date_time)
 
     fun bindView(entity: Notification, date: String) {
         val message: String = entity.message
