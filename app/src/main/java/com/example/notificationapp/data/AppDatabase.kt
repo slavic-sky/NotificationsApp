@@ -33,7 +33,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun notificationDao(): NotificationDao
 
     companion object {
-
         // For Singleton instantiation
         @Volatile private var instance: AppDatabase? = null
 

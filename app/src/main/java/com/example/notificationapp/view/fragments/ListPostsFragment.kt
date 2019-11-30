@@ -3,17 +3,25 @@ package com.example.notificationapp.view.fragments
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.notificationapp.databinding.FragmentListBinding
+import com.example.notificationapp.databinding.FragmentViewPagerBinding
+import com.example.notificationapp.utils.InjectorUtils
 import com.example.notificationapp.view.adapters.ListPostsAdapter
 import com.example.notificationapp.viewmodel.PostsViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListPostsFragment : Fragment() {
 
-    private lateinit var postsViewModel: PostsViewModel
+    private val postsViewModel: PostsViewModel by viewModels {
+        InjectorUtils.providePostsViewModelFactory(requireContext())
+    }
 
     companion object {
         private val ARG_PARAM1 = "page number"
@@ -27,6 +35,20 @@ class ListPostsFragment : Fragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding = FragmentListBinding.inflate(inflater, container, false)
+        context ?: binding.root
+
+        val adapter = ListPostsAdapter()
+        binding.listNotifications.adapter = adapter
+        postsViewModel.getPostsLiveData().observe(this, Observer(adapter::loadNotification))
+        return binding.root
     }
 
     val LOG_TAG = "myLogs"
@@ -43,18 +65,16 @@ class ListPostsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initRecycler()
     }
 
     private fun initRecycler() {
-        val adapter = ListPostsAdapter()
+/*        val adapter = ListPostsAdapter()
         list_notifications.layoutManager = LinearLayoutManager(activity)
-        list_notifications.adapter = adapter
+        list_notifications.adapter = adapter*/
 
-        postsViewModel.getPostsLiveData().observe(this, Observer {
+/*        postsViewModel.getPostsLiveData().observe(this, Observer {
             adapter.loadNotification(it)
-        })
+        })*/
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

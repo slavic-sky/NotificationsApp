@@ -16,6 +16,8 @@
 
 package com.example.notificationapp.data
 
+import com.example.notificationapp.data.model.Notification
+
 /**
  * Repository module for handling data operations.
  */
@@ -23,18 +25,26 @@ class NotificationRepository private constructor(private val postDao: Notificati
 
     fun getPosts() = postDao.getNotifications()
 
-    suspend fun addPost(notificationEntity: NotificationEntity) = postDao.insertNotification(notificationEntity)
+    suspend fun addPost(notification: Notification) {
+        val notificationEntity = NotificationEntity(
+            message = notification.message,
+            title = notification.title
+        )
+
+        postDao.insertNotification(notificationEntity)
+    }
 
     fun getPostById(postId: String) = postDao.getNotificationById(postId)
 
     companion object {
 
         // For Singleton instantiation
-        @Volatile private var instance: NotificationRepository? = null
+        @Volatile
+        private var instance: NotificationRepository? = null
 
         fun getInstance(postDao: NotificationDao) =
-                instance ?: synchronized(this) {
-                    instance ?: NotificationRepository(postDao).also { instance = it }
-                }
+            instance ?: synchronized(this) {
+                instance ?: NotificationRepository(postDao).also { instance = it }
+            }
     }
 }

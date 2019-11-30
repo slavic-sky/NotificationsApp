@@ -2,29 +2,18 @@ package com.example.notificationapp.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.notificationapp.data.model.Notification
-import java.util.Calendar
+import java.util.*
 
 @Entity(
     tableName = "notifications",
-    foreignKeys = [
-        ForeignKey(
-            entity = NotificationEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["post_id"]
-        )
-    ],
     indices = [Index("post_id")]
 )
 data class NotificationEntity(
-    @ColumnInfo(name = "date_to_send") val postDate: Calendar = Calendar.getInstance(),
-
-    @ColumnInfo(name = "message") val postMessage: String,
-
-    @ColumnInfo(name = "title") val postTitle: String
+    @ColumnInfo(name = "date_to_send") val date: Calendar = Calendar.getInstance(),
+    @ColumnInfo(name = "message") val message: String,
+    @ColumnInfo(name = "title") val title: String?
 
 ) {
     @PrimaryKey(autoGenerate = true)
