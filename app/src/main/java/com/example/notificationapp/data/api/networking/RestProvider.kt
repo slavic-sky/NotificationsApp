@@ -1,7 +1,6 @@
 package com.example.notificationapp.data.api.networking
 
 import com.example.notificationapp.NotificationApp.Companion.context
-import com.example.notificationapp.data.api.networking.RepositoryProvider.responseSuccess
 import com.example.notificationapp.data.api.services.PushoverApi
 import com.example.notificationapp.data.model.Notification
 import com.example.notificationapp.utils.extensions.toast
@@ -32,7 +31,7 @@ class RestProvider {
             .create(PushoverApi::class.java)
     }
 
-    private val service = getRetrofit()
+    val service = getRetrofit()
 
     fun sendMessage(notification: Notification) {
         service.sendMessage(
@@ -53,7 +52,6 @@ class RestProvider {
             ) {
                 if (response.isSuccessful && response.body() != null) {
                     context.toast("notification will come now")
-                    responseSuccess()
                 }
             }
         })

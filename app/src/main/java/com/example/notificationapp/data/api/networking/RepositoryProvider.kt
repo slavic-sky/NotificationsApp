@@ -4,12 +4,12 @@ import com.example.notificationapp.data.model.Notification
 
 object RepositoryProvider {
 
-    private val retrofitClient =
+/*    private val retrofitClient =
         RestProvider()
 
     fun sendMessage(notification: Notification) {
         retrofitClient.sendMessage(notification)
-    }
+    }*/
 
 /*    fun sendMessageToDate(notificationBody: NotificationBody, date: Date) {
         val currentDate = Date()
