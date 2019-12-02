@@ -3,6 +3,7 @@ package com.example.notificationapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.notificationapp.data.ResponseWrapper
 import com.example.notificationapp.data.api.networking.RestProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +44,7 @@ abstract class BaseViewModel : ViewModel() {
                 launch(Dispatchers.Main) {
                     if (res.data != null) {
                         response(Event.success(res.data))
+                        this@BaseViewModel.addPostToList()
                     } else if (res.error != null) {
                         response(Event.error(res.error))
                     }
