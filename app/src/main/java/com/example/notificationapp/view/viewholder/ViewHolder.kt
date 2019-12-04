@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notificationapp.R
-import com.example.notificationapp.data.model.Notification
+import com.example.notificationapp.data.model.NotificationMessage
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -12,7 +12,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val messageView: TextView = itemView.findViewById(R.id.tv_notif_message)
     private val dateView: TextView = itemView.findViewById(R.id.tv_notif_date_time)
 
-    fun bindView(entity: Notification, date: String) {
+    fun bindView(entity: NotificationMessage, date: String) {
         val message: String = entity.message
         val title: String? = entity.title
         val date: String = date

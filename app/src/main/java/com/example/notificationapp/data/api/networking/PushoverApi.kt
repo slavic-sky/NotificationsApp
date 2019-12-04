@@ -1,9 +1,7 @@
-package com.example.notificationapp.data.api.services
+package com.example.notificationapp.data.api.networking
 
 import com.example.notificationapp.data.ResponseWrapper
-import com.example.notificationapp.data.model.Notification
-import retrofit2.Call
-import retrofit2.Callback
+import com.example.notificationapp.data.model.NotificationMessage
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -17,5 +15,5 @@ interface PushoverApi {
         @Field("message") message: String,
         @Field("title") title: String?,
         @Field("device") device: String?
-    ): Call<Notification>
+    ): ResponseWrapper<NotificationMessage>
 }

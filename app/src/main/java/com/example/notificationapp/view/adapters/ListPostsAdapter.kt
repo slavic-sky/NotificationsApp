@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notificationapp.R
-import com.example.notificationapp.data.model.Notification
+import com.example.notificationapp.data.model.NotificationMessage
 import com.example.notificationapp.view.viewholder.ViewHolder
 
 class ListPostsAdapter : RecyclerView.Adapter<ViewHolder>() {
 
-    private var postsList: MutableList<Notification> = arrayListOf()
+    private var postsList: MutableList<NotificationMessage> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
@@ -26,8 +26,8 @@ class ListPostsAdapter : RecyclerView.Adapter<ViewHolder>() {
         holder.bindView(messageBody, "")
     }
 
-    fun loadNotification(notification: Notification) {
-        postsList.add(notification)
+    fun loadNotification(notificationMessage: NotificationMessage) {
+        postsList.add(notificationMessage)
         notifyDataSetChanged()
     }
 }

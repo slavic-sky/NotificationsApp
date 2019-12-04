@@ -4,11 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.notificationapp.data.ResponseWrapper
-import com.example.notificationapp.data.api.networking.RestProvider
+import com.example.notificationapp.data.model.NotificationMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
+
+    private lateinit var notificationMessage: NotificationMessage
+
+    abstract fun responseSuccess(notificationMessage: NotificationMessage)
 
     fun <T> requestWithLiveData(
         liveData: MutableLiveData<Event<T>>,
@@ -21,6 +25,7 @@ abstract class BaseViewModel : ViewModel() {
                 val response = request.invoke()
                 if (response.data != null) {
                     liveData.postValue(Event.success(response.data))
+                    responseSuccess(notificationMessage)
                 } else if (response.error != null) {
                     liveData.postValue(Event.error(response.error))
                 }
@@ -44,7 +49,6 @@ abstract class BaseViewModel : ViewModel() {
                 launch(Dispatchers.Main) {
                     if (res.data != null) {
                         response(Event.success(res.data))
-                        this@BaseViewModel.addPostToList()
                     } else if (res.error != null) {
                         response(Event.error(res.error))
                     }

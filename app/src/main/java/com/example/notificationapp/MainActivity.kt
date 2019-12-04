@@ -1,17 +1,22 @@
 package com.example.notificationapp
 
+import android.content.Context
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavOptions
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.plusAssign
 import androidx.viewpager.widget.ViewPager
 import com.example.notificationapp.databinding.ActivityMainBinding
+import com.example.notificationapp.utils.InjectorUtils
 import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
 import com.example.notificationapp.view.fragments.InputFragment
 import com.example.notificationapp.view.fragments.ListPostsFragment
 import com.example.notificationapp.view.navigation.KeepStateNavigator
+import com.example.notificationapp.viewmodel.PostsViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,6 +26,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tabs: TabLayout
     private lateinit var inputFragment: InputFragment
     private lateinit var listPostsFragment: ListPostsFragment
+
+    val postsViewModel: PostsViewModel by viewModels {
+        InjectorUtils.providePostsViewModelFactory(context = applicationContext)
+}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package project.views.cleancoroutines.mvvm
+package com.example.notificationapp.viewmodel
 
 enum class Status {
     SUCCESS,

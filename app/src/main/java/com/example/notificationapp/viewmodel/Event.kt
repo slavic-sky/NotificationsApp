@@ -1,7 +1,5 @@
 package com.example.notificationapp.viewmodel
 
-import project.views.cleancoroutines.mvvm.Status
-
 data class Event<out T>(val status: Status, val data: T?, val error: Error?) {
 
     companion object {

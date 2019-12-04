@@ -13,20 +13,22 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.notificationapp.MainActivity
 import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.R
-import com.example.notificationapp.data.api.networking.RepositoryProvider
-import com.example.notificationapp.data.model.Notification
+import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.utils.INPUT_MASK
+import com.example.notificationapp.utils.InjectorUtils
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
+import com.example.notificationapp.viewmodel.PostsViewModel
 import kotlinx.android.synthetic.main.fragment_input.*
-
 
 class InputFragment : Fragment() {
 
     private var dateIsValid: Boolean = false
-    private val INPUT_MASK = "__/__/__, __:__"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,19 +41,6 @@ class InputFragment : Fragment() {
         return localInflater.inflate(R.layout.fragment_input, container, false)
     }
 
-    companion object {
-        private const val ARG_PARAM1 = "page number"
-        private const val ARG_PARAM2 = "title"
-
-        fun newInstance(page: Int, title: String): Fragment {
-            val fragment = InputFragment()
-            val args = Bundle()
-            args.putInt(ARG_PARAM1, page)
-            args.putString(ARG_PARAM2, title)
-            fragment.arguments = args
-            return fragment
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -69,14 +58,15 @@ class InputFragment : Fragment() {
             }
         }
 
-        val messageBody = Notification()
+        val messageBody = NotificationMessage()
 
         buttonSend.setOnClickListener {
             messageBody.message = editTextMessage.text.toString()
             messageBody.title = editTextTitle.text.toString()
 
             if (messageBody.message.isNotEmpty()) {
-                RepositoryProvider.sendMessage(messageBody)
+                MainActivity.
+                    //.sendMessage(messageBody)
             } else {
                 NotificationApp.context.toast("type something!")
             }
@@ -88,6 +78,20 @@ class InputFragment : Fragment() {
                 )
             } else {*/
             //}
+        }
+    }
+
+    companion object {
+        private const val ARG_PARAM1 = "page number"
+        private const val ARG_PARAM2 = "title"
+
+        fun newInstance(page: Int, title: String): Fragment {
+            val fragment = InputFragment()
+            val args = Bundle()
+            args.putInt(ARG_PARAM1, page)
+            args.putString(ARG_PARAM2, title)
+            fragment.arguments = args
+            return fragment
         }
     }
 

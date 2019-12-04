@@ -19,10 +19,6 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListPostsFragment : Fragment() {
 
-    private val postsViewModel: PostsViewModel by viewModels {
-        InjectorUtils.providePostsViewModelFactory(requireContext())
-    }
-
     companion object {
         private const val ARG_PARAM1 = "page number"
         private const val ARG_PARAM2 = "title"

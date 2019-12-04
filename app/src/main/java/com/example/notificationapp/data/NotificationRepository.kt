@@ -16,7 +16,7 @@
 
 package com.example.notificationapp.data
 
-import com.example.notificationapp.data.model.Notification
+import com.example.notificationapp.data.model.NotificationMessage
 
 /**
  * Repository module for handling data operations.
@@ -25,10 +25,10 @@ class NotificationRepository private constructor(private val postDao: Notificati
 
     fun getPosts() = postDao.getNotifications()
 
-    suspend fun addPost(notification: Notification) {
+    suspend fun addPost(notificationMessage: NotificationMessage) {
         val notificationEntity = NotificationEntity(
-            message = notification.message,
-            title = notification.title
+            message = notificationMessage.message,
+            title = notificationMessage.title
         )
         postDao.insertNotification(notificationEntity)
     }
