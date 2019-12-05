@@ -8,7 +8,7 @@ import com.example.notificationapp.viewmodel.PostsViewModelFactory
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
  */
-object InjectorUtils {
+/*object InjectorUtils {
 
     fun providePostsViewModelFactory(context: Context): PostsViewModelFactory {
         val repository = getPostsRepository(context)
@@ -19,4 +19,4 @@ object InjectorUtils {
         return NotificationRepository.getInstance(
             AppDatabase.getInstance(context.applicationContext).notificationDao())
     }
-}
+}*/

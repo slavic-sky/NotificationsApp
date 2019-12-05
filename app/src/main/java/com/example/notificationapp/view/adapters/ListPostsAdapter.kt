@@ -26,8 +26,8 @@ class ListPostsAdapter : RecyclerView.Adapter<ViewHolder>() {
         holder.bindView(messageBody, "")
     }
 
-    fun loadNotification(notificationMessage: NotificationMessage) {
-        postsList.add(notificationMessage)
+    fun loadNotification(notificationMessage: NotificationMessage?) {
+        notificationMessage?.let { postsList.add(it) }
         notifyDataSetChanged()
     }
 }

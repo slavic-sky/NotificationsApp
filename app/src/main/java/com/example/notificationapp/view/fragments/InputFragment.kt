@@ -14,21 +14,29 @@ import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.notificationapp.MainActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.R
 import com.example.notificationapp.data.model.NotificationMessage
 import com.example.notificationapp.utils.INPUT_MASK
-import com.example.notificationapp.utils.InjectorUtils
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
 import com.example.notificationapp.viewmodel.PostsViewModel
+import com.example.notificationapp.viewmodel.PostsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_input.*
+import javax.inject.Inject
 
 class InputFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private var dateIsValid: Boolean = false
+
+    val postsViewModel: PostsViewModel by viewModels{
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,8 +73,7 @@ class InputFragment : Fragment() {
             messageBody.title = editTextTitle.text.toString()
 
             if (messageBody.message.isNotEmpty()) {
-                MainActivity.
-                    //.sendMessage(messageBody)
+                postsViewModel.sendMessage(messageBody)
             } else {
                 NotificationApp.context.toast("type something!")
             }
