@@ -62,8 +62,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-
-        NotificationApp.appComponent.inject(this)
     }
 
     private fun initViews() {
