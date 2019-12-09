@@ -14,7 +14,6 @@ import com.example.notificationapp.view.fragments.InputFragment
 import com.example.notificationapp.view.fragments.ListPostsFragment
 import com.example.notificationapp.view.navigation.KeepStateNavigator
 import com.google.android.material.tabs.TabLayout
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
