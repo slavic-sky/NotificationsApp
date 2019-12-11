@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-package com.example.notificationapp.di
+package com.example.notificationapp.di.modules
 
-import com.example.notificationapp.view.fragments.InputFragment
-import com.example.notificationapp.view.fragments.ListPostsFragment
-
+import com.example.notificationapp.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
 @Module
-abstract class FragmentBuildersModule {
-    @ContributesAndroidInjector
-    abstract fun contributeRepoFragment(): InputFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributeUserFragment(): ListPostsFragment
+abstract class MainActivityModule {
+    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    abstract fun contributeMainActivity(): MainActivity
 }

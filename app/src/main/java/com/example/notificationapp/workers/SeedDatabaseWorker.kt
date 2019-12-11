@@ -36,12 +36,7 @@ class SeedDatabaseWorker(
     override suspend fun doWork(): Result = coroutineScope {
         try {
             applicationContext.assets.open("posts.json").use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
-                    val plantType = object : TypeToken<List<NotificationEntity>>() {}.type
-                    val plantList: List<NotificationEntity> = Gson().fromJson(jsonReader, plantType)
-                    //TODO: understand what's going on here
-                    val database = AppDatabase.getInstance(applicationContext)
-
+                JsonReader(inputStream.reader()).use {
                     Result.success()
                 }
             }

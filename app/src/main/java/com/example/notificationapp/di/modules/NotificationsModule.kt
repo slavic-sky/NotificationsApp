@@ -1,4 +1,4 @@
-package com.example.notificationapp.modules
+package com.example.notificationapp.di.modules
 
 import com.example.notificationapp.data.api.networking.PushoverApi
 import com.example.notificationapp.utils.BASE_URL

@@ -7,7 +7,7 @@ import com.example.notificationapp.data.api.networking.RestProvider
 import com.example.notificationapp.data.model.NotificationMessage
 import kotlinx.coroutines.launch
 
-class PostsViewModel(private val notificationRepository: NotificationRepository) : BaseViewModel() {
+class PostListViewModel constructor(private val notificationRepository: NotificationRepository) : BaseViewModel() {
 
     private val postLiveData = MutableLiveData<Event<NotificationMessage>>()
     private val service = RestProvider().getRetrofit()

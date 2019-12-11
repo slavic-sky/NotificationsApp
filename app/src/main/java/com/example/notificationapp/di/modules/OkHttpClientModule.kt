@@ -1,4 +1,4 @@
-package com.example.notificationapp.modules
+package com.example.notificationapp.di.modules
 
 import dagger.Module
 import dagger.Provides

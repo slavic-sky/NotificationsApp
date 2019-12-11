@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notificationapp.databinding.FragmentListBinding
 import com.example.notificationapp.view.adapters.ListPostsAdapter
-import com.example.notificationapp.viewmodel.PostsViewModel
+import com.example.notificationapp.viewmodel.PostListViewModel
 import com.example.notificationapp.viewmodel.Status
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
@@ -21,7 +20,7 @@ class ListPostsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val postsViewModel: PostsViewModel by viewModels {
+    val postListViewModel: PostListViewModel by viewModels {
         viewModelFactory
     }
 
@@ -50,7 +49,7 @@ class ListPostsFragment : Fragment() {
         val adapter = ListPostsAdapter()
         binding.listNotifications.layoutManager = LinearLayoutManager(activity)
         binding.listNotifications.adapter = adapter
-        postsViewModel.getPostsLiveData().observe(this, Observer {
+        postListViewModel.getPostsLiveData().observe(this, Observer {
             when (it.status){
                 Status.LOADING -> toast("loading")
                 Status.SUCCESS -> adapter.loadNotification(it.data)

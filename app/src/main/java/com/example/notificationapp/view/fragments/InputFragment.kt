@@ -15,7 +15,6 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.example.notificationapp.NotificationApp
 import com.example.notificationapp.R
 import com.example.notificationapp.data.model.NotificationMessage
@@ -23,9 +22,9 @@ import com.example.notificationapp.utils.INPUT_MASK
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
-import com.example.notificationapp.viewmodel.PostsViewModel
-import com.example.notificationapp.viewmodel.PostsViewModelFactory
+import com.example.notificationapp.viewmodel.PostListViewModel
 import kotlinx.android.synthetic.main.fragment_input.*
+import timber.log.Timber
 import javax.inject.Inject
 
 class InputFragment : Fragment() {
@@ -34,7 +33,7 @@ class InputFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private var dateIsValid: Boolean = false
 
-    val postsViewModel: PostsViewModel by viewModels{
+    val postListViewModel: PostListViewModel by viewModels{
         viewModelFactory
     }
 
@@ -43,7 +42,6 @@ class InputFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d(TAG, "onCreateView")
         val contextThemeWrapper: Context = ContextThemeWrapper(activity, R.style.AppTheme)
         val localInflater = inflater.cloneInContext(contextThemeWrapper)
         return localInflater.inflate(R.layout.fragment_input, container, false)
@@ -73,7 +71,7 @@ class InputFragment : Fragment() {
             messageBody.title = editTextTitle.text.toString()
 
             if (messageBody.message.isNotEmpty()) {
-                postsViewModel.sendMessage(messageBody)
+                postListViewModel.sendMessage(messageBody)
             } else {
                 NotificationApp.context.toast("type something!")
             }
@@ -106,7 +104,7 @@ class InputFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.d(LOG_TAG, "Fragment1 onAttach")
+        Timber.tag(LOG_TAG).d("Fragment1 onAttach")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

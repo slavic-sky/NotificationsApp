@@ -33,7 +33,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         initViews()
         setupViewPager()
+        setupNavigation()
+    }
 
+    private fun setupNavigation() {
         val navController = findNavController(R.id.nav_host_fragment)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
         val navigator =
@@ -46,7 +49,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             .build()
 
         val tabLayout = tabs
-
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {

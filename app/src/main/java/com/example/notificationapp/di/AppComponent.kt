@@ -18,6 +18,7 @@ package com.example.notificationapp.di
 
 import android.app.Application
 import com.example.notificationapp.NotificationApp
+import com.example.notificationapp.di.modules.MainActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

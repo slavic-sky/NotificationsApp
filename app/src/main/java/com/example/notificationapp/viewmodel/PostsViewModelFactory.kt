@@ -2,6 +2,8 @@ package com.example.notificationapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.notificationapp.NotificationApp.Companion.context
+import com.example.notificationapp.data.AppDatabase
 import com.example.notificationapp.data.NotificationRepository
 import javax.inject.Inject
 import javax.inject.Provider
@@ -23,6 +25,5 @@ class PostsViewModelFactory @Inject constructor(
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
-        //PostsViewModel(repository) as T
     }
 }
