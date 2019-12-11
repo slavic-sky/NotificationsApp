@@ -3,8 +3,8 @@ package com.example.notificationapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.notificationapp.data.ResponseWrapper
-import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.data.db.ResponseWrapper
+import com.example.notificationapp.domain.model.NotificationMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -16,7 +16,8 @@ abstract class BaseViewModel : ViewModel() {
 
     fun <T> requestWithLiveData(
         liveData: MutableLiveData<Event<T>>,
-        request: suspend () -> ResponseWrapper<T>) {
+        request: suspend () -> ResponseWrapper<T>
+    ) {
 
         liveData.postValue(Event.loading())
 

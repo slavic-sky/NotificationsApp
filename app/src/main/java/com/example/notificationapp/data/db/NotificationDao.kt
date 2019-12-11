@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.notificationapp.data
+package com.example.notificationapp.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

@@ -1,10 +1,5 @@
 package com.example.notificationapp.utils
 
-import android.content.Context
-import com.example.notificationapp.data.AppDatabase
-import com.example.notificationapp.data.NotificationRepository
-import com.example.notificationapp.viewmodel.PostsViewModelFactory
-
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
  */

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notificationapp.R
-import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.domain.model.NotificationMessage
 import com.example.notificationapp.view.viewholder.ViewHolder
 
 class ListPostsAdapter : RecyclerView.Adapter<ViewHolder>() {

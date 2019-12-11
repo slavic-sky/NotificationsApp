@@ -1,6 +1,5 @@
 package com.example.notificationapp.view.fragments
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -15,9 +14,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.notificationapp.NotificationApp
+import com.example.notificationapp.App
 import com.example.notificationapp.R
-import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.domain.model.NotificationMessage
 import com.example.notificationapp.utils.INPUT_MASK
 import com.example.notificationapp.utils.extensions.hangAFormatWatcher
 import com.example.notificationapp.utils.extensions.isValidDateTime
@@ -73,7 +72,7 @@ class InputFragment : Fragment() {
             if (messageBody.message.isNotEmpty()) {
                 postListViewModel.sendMessage(messageBody)
             } else {
-                NotificationApp.context.toast("type something!")
+                App.context.toast("type something!")
             }
 
 /*            if (dateIsValid) {

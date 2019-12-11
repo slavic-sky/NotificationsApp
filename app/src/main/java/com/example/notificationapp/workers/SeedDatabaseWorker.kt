@@ -20,10 +20,6 @@ import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.example.notificationapp.data.AppDatabase
-import com.example.notificationapp.data.NotificationEntity
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.coroutineScope
 

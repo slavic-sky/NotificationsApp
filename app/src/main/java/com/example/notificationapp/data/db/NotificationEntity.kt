@@ -1,4 +1,4 @@
-package com.example.notificationapp.data
+package com.example.notificationapp.data.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

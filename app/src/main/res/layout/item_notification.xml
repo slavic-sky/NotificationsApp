@@ -10,7 +10,7 @@
 
         <variable
             name="post"
-            type="com.example.notificationapp.data.NotificationEntity" />
+            type="com.example.notificationapp.data.db.NotificationEntity" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"

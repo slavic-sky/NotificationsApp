@@ -1,4 +1,4 @@
-package com.example.notificationapp.data.model
+package com.example.notificationapp.domain.model
 
 
 import com.google.gson.annotations.SerializedName

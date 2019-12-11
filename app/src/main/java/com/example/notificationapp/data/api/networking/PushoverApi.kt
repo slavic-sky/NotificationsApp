@@ -1,7 +1,7 @@
 package com.example.notificationapp.data.api.networking
 
-import com.example.notificationapp.data.ResponseWrapper
-import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.data.db.ResponseWrapper
+import com.example.notificationapp.domain.model.NotificationMessage
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

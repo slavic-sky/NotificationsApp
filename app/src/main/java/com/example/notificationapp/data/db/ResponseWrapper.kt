@@ -1,4 +1,4 @@
-package com.example.notificationapp.data
+package com.example.notificationapp.data.db
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

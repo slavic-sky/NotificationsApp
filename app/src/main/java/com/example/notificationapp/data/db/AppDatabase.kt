@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.notificationapp.data
+package com.example.notificationapp.data.db
 
 import android.content.Context
 import androidx.room.Database
@@ -37,8 +37,12 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+            return instance
+                ?: synchronized(this) {
+                instance
+                    ?: buildDatabase(
+                        context
+                    ).also { instance = it }
             }
         }
 

@@ -2,9 +2,9 @@ package com.example.notificationapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.notificationapp.data.NotificationRepository
+import com.example.notificationapp.data.db.NotificationRepository
 import com.example.notificationapp.data.api.networking.RestProvider
-import com.example.notificationapp.data.model.NotificationMessage
+import com.example.notificationapp.domain.model.NotificationMessage
 import kotlinx.coroutines.launch
 
 class PostListViewModel constructor(private val notificationRepository: NotificationRepository) : BaseViewModel() {
