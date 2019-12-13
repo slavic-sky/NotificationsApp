@@ -16,7 +16,7 @@ import com.example.notificationapp.viewmodel.Status
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
 
-class ListPostsFragment : Fragment() {
+class PostListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -29,7 +29,7 @@ class ListPostsFragment : Fragment() {
         private const val ARG_PARAM2 = "title"
 
         fun newInstance(page: Int, title: String): Fragment {
-            val fragment = ListPostsFragment()
+            val fragment = PostListFragment()
             val args = Bundle()
             args.putInt(ARG_PARAM1, page)
             args.putString(ARG_PARAM2, title)

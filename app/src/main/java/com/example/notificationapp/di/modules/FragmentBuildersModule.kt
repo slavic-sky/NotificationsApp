@@ -17,7 +17,7 @@
 package com.example.notificationapp.di.modules
 
 import com.example.notificationapp.view.fragments.InputFragment
-import com.example.notificationapp.view.fragments.ListPostsFragment
+import com.example.notificationapp.view.fragments.PostListFragment
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -29,5 +29,5 @@ abstract class FragmentBuildersModule {
     abstract fun contributeInputFragment(): InputFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeListPostsFragment(): ListPostsFragment
+    abstract fun contributeListPostsFragment(): PostListFragment
 }

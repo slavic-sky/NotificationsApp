@@ -29,12 +29,9 @@ import javax.inject.Inject
 class InputFragment : Fragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel : PostListViewModel
+    
     private var dateIsValid: Boolean = false
-
-    val postListViewModel: PostListViewModel by viewModels{
-        viewModelFactory
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

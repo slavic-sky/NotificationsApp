@@ -3,7 +3,6 @@ package com.example.notificationapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.plusAssign
@@ -11,22 +10,17 @@ import androidx.viewpager.widget.ViewPager
 import com.example.notificationapp.databinding.ActivityMainBinding
 import com.example.notificationapp.view.adapters.CustomFragmentPagerAdapter
 import com.example.notificationapp.view.fragments.InputFragment
-import com.example.notificationapp.view.fragments.ListPostsFragment
+import com.example.notificationapp.view.fragments.PostListFragment
 import com.example.notificationapp.view.navigation.KeepStateNavigator
 import com.google.android.material.tabs.TabLayout
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+class MainActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager
     private lateinit var tabs: TabLayout
     private lateinit var inputFragment: InputFragment
-    private lateinit var listPostsFragment: ListPostsFragment
+    private lateinit var postListFragment: PostListFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,14 +68,12 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val adapter = CustomFragmentPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
         inputFragment = InputFragment.newInstance(0, "Input post") as InputFragment
-        listPostsFragment =
-            ListPostsFragment.newInstance(1, "List of messages") as ListPostsFragment
+        postListFragment =
+            PostListFragment.newInstance(1, "List of messages") as PostListFragment
         adapter.addFragment(inputFragment, "Input post")
-        adapter.addFragment(listPostsFragment, "List of messages")
+        adapter.addFragment(postListFragment, "List of messages")
         tabs.setupWithViewPager(viewPager)
     }
-
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
 
 }
 
