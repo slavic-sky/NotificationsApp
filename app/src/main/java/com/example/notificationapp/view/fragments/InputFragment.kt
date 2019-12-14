@@ -23,6 +23,7 @@ import com.example.notificationapp.utils.extensions.isValidDateTime
 import com.example.notificationapp.utils.extensions.toast
 import com.example.notificationapp.viewmodel.PostListViewModel
 import kotlinx.android.synthetic.main.fragment_input.*
+import org.jetbrains.anko.support.v4.toast
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -30,10 +31,10 @@ class InputFragment : Fragment() {
 
     @Inject
     lateinit var viewModel : PostListViewModel
-    
+
     private var dateIsValid: Boolean = false
 
-    override fun onCreateView(
+/*    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,8 +42,7 @@ class InputFragment : Fragment() {
         val contextThemeWrapper: Context = ContextThemeWrapper(activity, R.style.AppTheme)
         val localInflater = inflater.cloneInContext(contextThemeWrapper)
         return localInflater.inflate(R.layout.fragment_input, container, false)
-    }
-
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,9 +67,9 @@ class InputFragment : Fragment() {
             messageBody.title = editTextTitle.text.toString()
 
             if (messageBody.message.isNotEmpty()) {
-                postListViewModel.sendMessage(messageBody)
+
             } else {
-                App.context.toast("type something!")
+                toast("type something!")
             }
 
 /*            if (dateIsValid) {
